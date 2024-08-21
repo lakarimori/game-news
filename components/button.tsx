@@ -11,7 +11,7 @@ const MyButton:React.FC<buttonProps> = ({title, number}) => {
     }
 
     return (
-        <button>{title} {number}</button>
+        <button onClick={handleClick}>{title} {number}</button>
     );
 }
 
