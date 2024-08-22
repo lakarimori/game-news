@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type buttonProps = {
     title: String;
@@ -6,12 +6,18 @@ type buttonProps = {
 }
 
 const MyButton:React.FC<buttonProps> = ({title, number}) => {
+
+    const [count, setCount] = useState(number);
+
     const handleClick = () => {
-        number += 1;
+        setCount(prevCount => prevCount + 1);
     }
 
     return (
-        <button onClick={handleClick}>{title} {number}</button>
+        <div>
+            <button onClick={handleClick}>{title}</button>
+            <div>{count}</div>
+        </div>
     );
 }
 
