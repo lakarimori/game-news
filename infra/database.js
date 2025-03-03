@@ -9,10 +9,15 @@ async function query(query) {
     password: process.env.POSTGRES_PASSWORD,
   });
   await client.connect();
-  const result = await client.query(query);
-  client.end();
 
-  return result;
+  try {
+    const result = await client.query(query);
+    return result;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    client.end();
+  }
 }
 
 export default {
